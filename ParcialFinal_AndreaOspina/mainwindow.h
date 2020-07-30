@@ -6,6 +6,7 @@
 #include<QTimer>
 #include"parabolico.h"
 #include"caidalibre.h"
+#include"obstaculo.h"
 namespace Ui {
 class MainWindow;
 }
@@ -28,6 +29,7 @@ private:
     QGraphicsScene *escena;
     Parabolico *parabolico;
     CaidaLibre *especial;
+    Obstaculo *obs;
 };
 
 #endif // MAINWINDOW_H

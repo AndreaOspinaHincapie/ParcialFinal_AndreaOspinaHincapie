@@ -14,8 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
     srand(unsigned(time(nullptr)));
     //parabolico=new Parabolico(0,0,10,-10);
     especial=new CaidaLibre(100,100);
+    obs=new Obstaculo(100,100,30);
     //escena->addItem(parabolico);
     escena->addItem(especial);
+    escena->addItem(obs);
 }
 
 MainWindow::~MainWindow()
