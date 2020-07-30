@@ -13,11 +13,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     srand(unsigned(time(nullptr)));
     //parabolico=new Parabolico(0,0,10,-10);
-    especial=new CaidaLibre(100,100);
-    obs=new Obstaculo(100,100,30);
+    //especial=new CaidaLibre(100,100);
+    //obs=new Obstaculo(100,100,30);
     //escena->addItem(parabolico);
-    escena->addItem(especial);
-    escena->addItem(obs);
+    //escena->addItem(especial);
+    //escena->addItem(obs);
 }
 
 MainWindow::~MainWindow()
@@ -25,16 +25,59 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::NuevoObstaculo()
+{
+    Obstaculos.push_back(new Obstaculo(rand()%(581),rand()%(391),20+rand()%(31)));
+    escena->addItem(Obstaculos.back());
+}
+
+void MainWindow::NuevoParabolico()
+{
+   Parabolicos.push_back(new Parabolico(rand()%(581),rand()%(391),rand()%(20),(-1)*(1+rand()%(20))));
+   escena->addItem(Parabolicos.back());
+}
+
+void MainWindow::NuevoEspecial()
+{
+    Especiales.push_back(new CaidaLibre(rand()%(581),rand()%(391)));
+    escena->addItem(Especiales.back());
+}
+
 void MainWindow::Actualizar()
 {
-    //parabolico->ActualizarPosicion();
-    especial->ActualizarPosicion();
+   contTime++;
+   if(contTime%40==0){
+       NuevoObstaculo();
+       NuevoParabolico();
+       for(int i=0; i<Obstaculos.size();i++){
+           Obstaculos.at(i)->setTiempoVida(Obstaculos.at(i)->getTiempoVida()-1);
+           if(Obstaculos.at(i)->getTiempoVida()==0){
+               escena->removeItem(Obstaculos.at(i));
+               Obstaculo *obstaculo=Obstaculos.at(i);
+               Obstaculos.removeAt(i);
+               delete obstaculo;
+           }
+       }
+   }
+   for(int i=0; i<Parabolicos.size();i++){
+       Parabolicos.at(i)->ActualizarPosicion();
+   }
+
+   for(int i=0; i<Especiales.size();i++){
+       Especiales.at(i)->ActualizarPosicion();
+   }
+
 
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    timer=new QTimer;
-    connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
-    timer->start(50);
+        timer=new QTimer;
+        connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
+        timer->start(50);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    NuevoEspecial();
 }
