@@ -25,10 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    parabolico.cpp \
+    obstaculo.cpp \
+    caidalibre.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    parabolico.h \
+    obstaculo.h \
+    caidalibre.h
 
 FORMS += \
         mainwindow.ui
