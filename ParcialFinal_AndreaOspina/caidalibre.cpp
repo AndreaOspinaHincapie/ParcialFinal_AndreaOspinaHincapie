@@ -29,9 +29,9 @@ void CaidaLibre::rebotar()
             qDebug()<<"colision con obstaculo"<<endl;
         }
     }
-
-
-
+    if(posX<1 || posX>580){
+        radio-=5;
+    }
 }
 
 void CaidaLibre::ActualizarPosicion()
