@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     srand(unsigned(time(nullptr)));
+
 }
 
 MainWindow::~MainWindow()
@@ -33,7 +34,7 @@ void MainWindow::NuevoParabolico()
 
 void MainWindow::NuevoEspecial()
 {
-    Especiales.push_back(new CaidaLibre(rand()%(581),rand()%(391)));
+    Especiales.push_back(new CaidaLibre(rand()%(581),rand()%(101)));
     escena->addItem(Especiales.back());
 }
 
