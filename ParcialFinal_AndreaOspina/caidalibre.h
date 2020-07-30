@@ -5,6 +5,7 @@
 #include<QPainter>
 #include<QGraphicsScene>
 #include<math.h>
+#include"obstaculo.h"
 
 class CaidaLibre: public QGraphicsItem
 {

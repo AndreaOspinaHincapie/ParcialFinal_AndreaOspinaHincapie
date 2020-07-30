@@ -21,6 +21,14 @@ void CaidaLibre::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 
 void CaidaLibre::rebotar()
 {
+    QList<QGraphicsItem*>colliding=collidingItems();
+    for(int i=0; i<colliding.size();i++){
+        if(typeid(colliding.at(i))==typeid (Obstaculo)){
+            Vy=-Vy;
+            radio-=5;
+        }
+    }
+
 
 
 }
@@ -29,6 +37,7 @@ void CaidaLibre::ActualizarPosicion()
 {
     //Segun ecuaciones de MRUA
         ActualizarVelocidad();
+        rebotar();
         posY-=Vy*delta-0.5*a*delta*delta; //Resta por sistema de coordenadas de la escena
         setPos(posX,posY);
 }

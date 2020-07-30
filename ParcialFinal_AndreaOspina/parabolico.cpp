@@ -24,6 +24,15 @@ void Parabolico::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 
 void Parabolico::rebotar()
 {
+    QList<QGraphicsItem*> colliding=collidingItems();
+    for(int i=0;i<colliding.size();i++){
+        if(typeid(colliding.at(i))==typeid (Obstaculo)){
+            Vy=-Vy;
+        }
+    }
+    if(posX<1 || posX>580){
+        Vx=-Vx;
+    }
 
 }
 
@@ -31,6 +40,7 @@ void Parabolico::ActualizarPosicion()
 {
     //Segun ecuaciones de MRUA
         ActualizarVelocidad();
+        rebotar();
         posX+=Vx*delta;
         posY-=Vy*delta-0.5*a*delta*delta; //Resta por sistema de coordenadas de la escena
         setPos(posX,posY);

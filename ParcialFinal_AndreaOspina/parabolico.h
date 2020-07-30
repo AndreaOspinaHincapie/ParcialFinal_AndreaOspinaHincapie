@@ -5,7 +5,7 @@
 #include<QPainter>
 #include<QGraphicsScene>
 #include<math.h>
-
+#include"obstaculo.h"
 class Parabolico: public QGraphicsItem
 {
 private:
