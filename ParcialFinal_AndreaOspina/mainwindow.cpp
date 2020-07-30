@@ -21,13 +21,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::NuevoObstaculo()
 {
-    Obstaculos.push_back(new Obstaculo(rand()%(581),rand()%(391),20+rand()%(31)));
+    Obstaculos.push_back(new Obstaculo(rand()%(581),rand()%(391),20+rand()%(51)));
     escena->addItem(Obstaculos.back());
 }
 
 void MainWindow::NuevoParabolico()
 {
-   Parabolicos.push_back(new Parabolico(rand()%(581),rand()%(391),rand()%(20),(-1)*(1+rand()%(20))));
+   Parabolicos.push_back(new Parabolico(rand()%(581),0,5+rand()%(20),(-1)*(5+rand()%(20))));
    escena->addItem(Parabolicos.back());
 }
 
@@ -40,7 +40,7 @@ void MainWindow::NuevoEspecial()
 void MainWindow::Actualizar()
 {
    contTime++;
-   if(contTime%40==0){
+   if(contTime%20==0){
        NuevoObstaculo();
        NuevoParabolico();
        for(int i=0; i<Obstaculos.size();i++){
@@ -54,11 +54,27 @@ void MainWindow::Actualizar()
        }
    }
    for(int i=0; i<Parabolicos.size();i++){
-       Parabolicos.at(i)->ActualizarPosicion();
+       if(Parabolicos.at(i)->y()<390){
+        Parabolicos.at(i)->ActualizarPosicion();
+       }
+       else{
+           Parabolicos.at(i)->Desaparecer();
+           Parabolico *para=Parabolicos.at(i);
+           Parabolicos.removeAt(i);
+           delete para;
+       }
    }
 
    for(int i=0; i<Especiales.size();i++){
-       Especiales.at(i)->ActualizarPosicion();
+       if(Especiales.at(i)->y()<390){
+        Especiales.at(i)->ActualizarPosicion();
+       }
+       else{
+           Especiales.at(i)->Desaparecer();
+           CaidaLibre *esp=Especiales.at(i);
+           Especiales.removeAt(i);
+           delete esp;
+       }
    }
 
 
