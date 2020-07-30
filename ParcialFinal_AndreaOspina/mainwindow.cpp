@@ -12,8 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     srand(unsigned(time(nullptr)));
-    parabolico=new Parabolico(0,0,10,-10);
-    escena->addItem(parabolico);
+    //parabolico=new Parabolico(0,0,10,-10);
+    especial=new CaidaLibre(100,100);
+    //escena->addItem(parabolico);
+    escena->addItem(especial);
 }
 
 MainWindow::~MainWindow()
@@ -23,7 +25,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::Actualizar()
 {
-    parabolico->ActualizarPosicion();
+    //parabolico->ActualizarPosicion();
+    especial->ActualizarPosicion();
 
 }
 

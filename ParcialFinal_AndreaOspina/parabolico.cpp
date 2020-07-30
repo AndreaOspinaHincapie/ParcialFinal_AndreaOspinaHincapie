@@ -7,6 +7,7 @@ Parabolico::Parabolico(double _posX, double _posY, double VelX, double VelY)
     Vx=VelX;
     Vy=VelY;
     V0y=VelY;
+    setPos(posX,posY);
 
 }
 
