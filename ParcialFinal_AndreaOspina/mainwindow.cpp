@@ -27,7 +27,7 @@ void MainWindow::NuevoObstaculo()
 
 void MainWindow::NuevoParabolico()
 {
-   Parabolicos.push_back(new Parabolico(rand()%(581),0,5+rand()%(20),(-1)*(5+rand()%(20))));
+   Parabolicos.push_back(new Parabolico(rand()%(581),0,(5+rand()%(20))-10,(-1)*(5+rand()%(20))));
    escena->addItem(Parabolicos.back());
 }
 
