@@ -28,6 +28,7 @@ void Parabolico::rebotar()
     for(int i=0;i<colliding.size();i++){
         if(typeid(colliding.at(i))==typeid (Obstaculo)){
             Vy=-Vy;
+            qDebug()<<"Colision con obstaculo";
         }
     }
     if(posX<1 || posX>580){

@@ -26,6 +26,7 @@ void CaidaLibre::rebotar()
         if(typeid(colliding.at(i))==typeid (Obstaculo)){
             Vy=-Vy;
             radio-=5;
+            qDebug()<<"colision con obstaculo"<<endl;
         }
     }
 
